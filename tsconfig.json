@@ -1,0 +1,25 @@
+{
+    "extends": "@tsconfig/svelte/tsconfig.json",
+    "compilerOptions": {
+        "target": "ES2023",
+        "lib": ["ES2023", "DOM", "DOM.Iterable"],
+        "module": "ESNext",
+        "moduleResolution": "Bundler",
+        "types": ["svelte", "vite/client"],
+        "strict": true,
+        "noUncheckedIndexedAccess": true,
+        "exactOptionalPropertyTypes": true,
+        "noImplicitOverride": true,
+        "noFallthroughCasesInSwitch": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "verbatimModuleSyntax": true,
+        "isolatedModules": true,
+        "erasableSyntaxOnly": true,
+        "moduleDetection": "force",
+        "allowJs": true,
+        "checkJs": true,
+        "noEmit": true
+    },
+    "include": ["src/**/*.ts", "src/**/*.js", "src/**/*.svelte", "tests/unit/**/*.ts"]
+}
