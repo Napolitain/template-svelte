@@ -1,6 +1,7 @@
 import js from '@eslint/js';
 import { defineConfig, globalIgnores } from 'eslint/config';
 import prettier from 'eslint-config-prettier';
+import sonarjs from 'eslint-plugin-sonarjs';
 import svelte from 'eslint-plugin-svelte';
 import globals from 'globals';
 import ts from 'typescript-eslint';
@@ -13,6 +14,11 @@ export default defineConfig(
     ts.configs.stylisticTypeChecked,
     svelte.configs.recommended,
     {
+        plugins: { sonarjs },
+        rules: {
+            complexity: ['error', 10],
+            'sonarjs/cognitive-complexity': ['error', 15],
+        },
         languageOptions: {
             parserOptions: {
                 project: ['./tsconfig.json', './tsconfig.node.json'],

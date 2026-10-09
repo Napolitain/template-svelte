@@ -37,6 +37,11 @@ prek run -a --hook-stage pre-push   # types, coverage, build, browser
   and checked JavaScript. App/unit files and Node tooling/browser tests have separate configurations.
 - ESLint: strict type-aware TypeScript rules and the official Svelte recommended rules; autofixes
   run before Prettier. Svelte compiler warnings fail the type check, including accessibility warnings.
+- Complexity: ESLint `complexity` limits cyclomatic complexity to 10; SonarJS
+  `cognitive-complexity` limits cognitive complexity to 15. Both are errors in `pnpm lint`,
+  pre-commit hooks and CI, including TypeScript inside Svelte scripts, tests and tooling.
+  Limits live in `eslint.config.js`; refactor violations manually. These measure functions,
+  not Svelte template markup. Only the SonarJS complexity rule is enabled.
 - TypeScript stays on 6.0 while `svelte-check` and `typescript-eslint` require that API. Prettier
   owns JSON formatting as well, avoiding conflicts with prek's generic JSON formatter.
 - Coverage: V8, minimum 80% each for statements, branches, functions and lines in `src/lib/**/*.ts`,
