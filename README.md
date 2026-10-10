@@ -10,6 +10,27 @@ tests/unit/        Vitest examples, including a fast-check property
 tests/browser/     Playwright tests against the production build
 ```
 
+## Optional Nix shell
+
+Installing the tools directly on NixOS (or another OS) remains supported. The
+optional shell supports x86_64/aarch64 Linux and Apple Silicon macOS. With Nix
+flakes enabled:
+
+```sh
+nix develop --command "$SHELL"       # keep your shell, aliases and prompt
+# Or: nix develop                   # use Nix's default Bash shell
+```
+
+Then run the normal development commands in this README. Each template has its own
+`flake.nix` and `flake.lock`, using `github:NixOS/nixpkgs/nixpkgs-unstable`.
+To refresh to the latest unstable packages, run `nix flake update nixpkgs`,
+then leave and re-enter the shell. Commit the updated lock file with your project.
+
+The shell supplies the latest Node.js package and pnpm; pnpm uses the project
+version declared in `package.json`. On Linux it also supplies Chromium and sets
+`PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH`, so skip the Playwright browser download.
+On macOS, run `pnpm exec playwright install chromium` after installing dependencies.
+
 ## Start
 
 Install Node.js 24+, the pnpm version in `package.json`, and prek.
