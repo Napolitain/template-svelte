@@ -77,3 +77,17 @@ static host to serve `dist/`. Add routing, server APIs or deployment configurati
 The starter uses Svelte 5 `$state`/`$derived`, a labeled input and a live greeting. Replace the
 example and its tests when starting your project. No environment variables are required;
 Vite variables prefixed with `VITE_` are public browser values and must not contain secrets.
+
+## Profile-guided optimization
+
+No instrumentation-PGO, sampling/AutoFDO or Propeller/relinking build mode is
+provided for this frontend. [Vite's production build](https://vite.dev/guide/build.html)
+emits JavaScript/CSS/assets, not a native application binary with compiler/linker
+profile inputs. Browser JavaScript engines optimize code at runtime; CPU or V8
+coverage profiles do not become inputs to `pnpm build`.
+
+Use browser performance tools to measure representative user journeys against
+`pnpm build` + `pnpm preview`, including loading, interaction latency and realistic
+data sizes. Compare repeated runs under the same browser/device/network settings.
+Optimizing the browser or Node runtime itself is a separate toolchain project;
+WebAssembly/native modules would also need their own compiler-specific workflow.
