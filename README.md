@@ -1,5 +1,7 @@
 # template-svelte
 
+See [AGENTS.md](AGENTS.md) for the working, verification, performance and commit policies.
+
 Minimal Svelte 5 frontend with TypeScript, Vite, Tailwind CSS and pnpm. Hooks via
 [prek](https://prek.j178.dev), matching the other [templates](https://github.com/Napolitain/templates).
 
